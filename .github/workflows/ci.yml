@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - dev
+      - qa
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Login
+      - name: Docker authentication
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_SECRET }}
+          project_id: cogent-nimbus-389215
+
+      # gcloud configure docker
+      - name: Configure Docker
+        run: gcloud auth configure-docker --quiet
+
+        # build image
+      - name: Build Docker image
+        run: docker build -t gcr.io/cogent-nimbus-389215/xeneca-sso:latest .
+
+      # push image
+      - name: Push Docker image
+        run: docker push gcr.io/cogent-nimbus-389215/xeneca-sso:latest
+
+      # deploy to Google App Engine
+      - name: Deploy
+        run: gcloud app deploy
