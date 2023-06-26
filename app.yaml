@@ -1,7 +1,7 @@
 runtime: custom
 env: flex
 
-service: xeneca-keycloak
+service: xeneca-keycloak-app
 manual_scaling:
   instances: 1
 
