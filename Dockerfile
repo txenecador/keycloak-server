@@ -10,5 +10,4 @@ ENV KEYCLOAK_USER admin
 ENV KEYCLOAK_PASSWORD @!Ttxenecador2023
 #ENV JAVA_OPTS -server -Xms2048m -Xmx6144m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true
 
-
-#EXPOSE 80
+EXPOSE 80
