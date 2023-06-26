@@ -1,4 +1,4 @@
-FROM eu.gcr.io/cogent-nimbus-389215/keycloak-base-image:latest
+FROM marketplace.gcr.io/google/keycloak21:latest
 
 ENV DB_VENDOR postgres
 ENV DB_ADDR 34.133.77.157
